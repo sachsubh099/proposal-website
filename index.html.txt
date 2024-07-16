@@ -3,23 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be My Girlfriend?</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Will You Marry Me?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: #ffe6e6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        header {
+            background: url('background.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 100px 20px;
+            text-shadow: 2px 2px 4px #000;
+            transition: background 1s;
+        }
+        header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4em;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: fadeInDown 1.5s forwards;
+        }
+        header p {
+            font-size: 1.5em;
+            margin: 10px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1.5s forwards;
+            animation-delay: 0.5s;
+        }
+        .content {
+            padding: 40px 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards;
+            animation-delay: 1s;
+        }
+        .content h2 {
+            font-size: 2.5em;
+            color: #b30000;
+        }
+        .content p, .content ul {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            margin-top: 20px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #e84347;
+        }
+        footer {
+            background: #b30000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .gallery img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #b30000;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-item {
+            padding: 20px 30px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards;
+        }
+        .timeline-item.left {
+            left: 0;
+        }
+        .timeline-item.right {
+            left: 50%;
+        }
+        .timeline-item::before {
+            content: ' ';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #b30000;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-item.right::before {
+            left: -16px;
+        }
+        .timeline-item .date {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #b30000;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Hello [Her Name],</h1>
-        <p>You mean the world to me and I have a question to ask...</p>
-        <button id="revealButton">Reveal the Question</button>
-        <div id="question" class="hidden">
-            <h2>Will You Be My Girlfriend?</h2>
-            <button id="yesButton" class="yes">Yes</button>
-            <button id="noButton" class="no">No</button>
-        </div>
-        <div id="response" class="hidden">
-            <h2 id="responseText"></h2>
+    <header>
+        <h1>Will You Marry Me?</h1>
+        <p>Welcome to a special journey through our love story</p>
+        <button class="button" onclick="scrollToSection('about')">Our Story</button>
+    </header>
+    
+    <!-- Music Player -->
+    <audio id="background-music" src="audio/background-music.mp3" autoplay loop>
+        Your browser does not support the audio element.
+    </audio>
+
+    <div id="about" class="content">
+        <h2>About Us</h2>
+        <p>Our journey began when we first met...</p>
+        <p>Here are some of the beautiful moments we've shared together:</p>
+        <div class="gallery">
+            <img src="photo1.jpg" alt="Our first date">
+            <img src="photo2.jpg" alt="Beach trip">
+            <img src="photo3.jpg" alt="Starry night">
         </div>
     </div>
-    <script src="script.js"></script>
+    <div id="why" class="content">
+        <h2>Why I Love You</h2>
+        <ul>
+            <li>Your smile brightens my day</li>
+            <li>You are always there for me</li>
+            <li>Our shared memories are my treasure</li>
+            <li>Your kind heart and endless patience</li>
+        </ul>
+    </div>
+    <div id="proposal" class="content">
+        <h2>My Proposal</h2>
+        <p>From the moment I met you, I knew you were the one. You have filled my life with love, joy, and unforgettable memories. Will you marry me?</p>
+        <button class="button" onclick="window.location.href='mailto:youremail@example.com?subject=Yes!&body=I%20say%20yes!'">Yes</button>
+        <button class="button" onclick="window.location.href='mailto:youremail@example.com?subject=No&body=Sorry,%20not%20now.'">No</button>
+    </div>
+    <div id="timeline" class="content">
+        <h2>Our Timeline</h2>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="date">Jan 2018</div>
+                <p>We met for the first time and sparks flew.</p>
+            </div>
+            <div class="timeline-item right">
+                <div class="date">Mar 2019</div>
+                <p>Our first trip together to the mountains.</p>
+            </div>
+            <div class="timeline-item left">
+                <div class="date">Jun 2020</div>
+                <p>We adopted our lovely puppy, Bella.</p>
+            </div>
+            <div class="timeline-item right">
+                <div class="date">Dec 2021</div>
+                <p>Celebrated our third anniversary.</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Made with ❤️ for you</p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to scroll to a section
+            window.scrollToSection = function (id) {
+                document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+            };
+
+            // Add scroll animation to content sections
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUp 1s forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.content').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Timeline animation
+            document.querySelectorAll('.timeline-item').forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.3}s`;
+                observer.observe(item);
+            });
+        });
+    </script>
 </body>
 </html>
